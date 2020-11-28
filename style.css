@@ -26,6 +26,11 @@ h4 {
   font-size: 70px;
   margin: 30px;
 }
+a {
+  text-align: center;
+  font-size: small;
+  margin: 15px;
+}
 .weather {
   background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
   display: block;
