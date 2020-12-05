@@ -22,10 +22,28 @@ li {
   font-weight: 100px;
   line-height: 19px;
 }
-.weather-app {
+.weather-app-wrap {
   max-width: 600px;
   margin: 30px 0 auto;
+}
+.weather-app {
   padding: 20px;
   border: 1px solid cadetblue;
   border-radius: 5px;
+}
+.overview {
+  margin: 20px;
+}
+.temperature img {
+  margin-right: 10px;
+}
+.temperature strong {
+  color: black;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 350;
+}
+.temperature .units {
+  position: relative;
+  top: -34px;
 }
