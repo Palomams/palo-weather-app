@@ -1,57 +1,19 @@
-let now = new Date();
-let h2 = document.querySelector("h2");
-
-let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let year = now.getFullYear();
-
-let days = [
-  `Sunday`,
-  `Monday`,
-  `Tuesday`,
-  `Wednesday`,
-  `Thursday`,
-  `Friday`,
-  `Saturday`,
-];
-let day = days[now.getDay()];
-let months = [
-  `January`,
-  `February`,
-  `March`,
-  `April`,
-  `May`,
-  `June`,
-  `July`,
-  `August`,
-  `Sepetmber`,
-  `October`,
-  `November`,
-  `December`,
-];
-let month = months[now.getMonth()];
-
-h2.innerHTML = `${day}, ${month} ${date}, ${year}, ${hours}: ${minutes}`;
-
-function search(event) {
-  event.preventDefault();
-  let city = document.querySelector("#search-text-input").value;
-  searchCity(city);
+function showTemperature(response) {
+  console.log(response.data);
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
-function Weather(response) {
-  document.querySelector("h1").innerHTML = response.data.name;
-  document.querySelector("h4").innerHTML = Math.round(response.data.main.temp);
-}
+let apiKey = "d5ce6c414742874c40031b2c0a198d64";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Madrid&appid=${apiKey}&units=metric`;
 
-function searchCity(city) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let units = "metric";
-  let endPoint = "https://api.openweathermap.org/data/2.5/weather";
-  let apiUrl = `${endPoint}?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(Weather);
-}
-
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+console.log(apiUrl);
+axios.get(apiUrl).then(showTemperature);
