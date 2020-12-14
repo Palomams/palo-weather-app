@@ -23,14 +23,15 @@ li {
   line-height: 19px;
   text-transform: capitalize;
 }
+
 .weather-app-wrap {
   max-width: 600px;
   margin: 30px 0 auto;
 }
 .weather-app {
   padding: 20px;
-  border: 1px solid cadetblue;
   border-radius: 5px;
+  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
 }
 .overview {
   margin: 20px;
@@ -40,11 +41,13 @@ li {
 }
 .temperature strong {
   color: black;
-  font-size: 64px;
+  font-size: 60px;
   line-height: 1;
   font-weight: 350;
+  position: relative;
+  top: 15px;
 }
 .temperature .units {
   position: relative;
-  top: -34px;
+  top: -20px;
 }
