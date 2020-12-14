@@ -43,9 +43,19 @@ function showTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+function search(city) {
+  let apiKey = "d5ce6c414742874c40031b2c0a198d64";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemperature);
+}
 
-let apiKey = "d5ce6c414742874c40031b2c0a198d64";
-let city = "Madrid";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function handleSubmit(event) {
+  event.preventDefault();
+  let citySearchElement = document.querySelector("#city-search");
+  search(citySearchElement.value);
+}
 
-axios.get(apiUrl).then(showTemperature);
+search("Madrid");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
